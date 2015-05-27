@@ -1,24 +1,22 @@
 ﻿var React = require('react');
 var Editor = require('../components/Editor');
 var _ = require('underscore');
+var Topbar = require('../components/Topbar');
 
 var files = [
   {
     title: 'Javascript',
-    content: 'function callMe() { \n console.log(\'Hi, Dave!\') \n}'
-  },
-  {
-    title: 'README.md',
-    content: 'Just basic readme'
+    content: 'function callMe() { \n console.log(\'Hi, Dave!\') \n}',
+    description: 'You want to send out a message via console.log'
   }
 ];
 
-var getTitleList = function() {
-  return _.chain(files)
-    .map(function(file) {
-      return _.pick(file, 'title');
-    })
-    .value();
+var getTitle = function() {
+  return files[0].title;
+}();
+
+var getDescription = function() {
+  return files[0].description;
 }();
 
 var EditorView = React.createClass({
@@ -26,11 +24,6 @@ var EditorView = React.createClass({
     return {
       activeTitle: _.first(files).title
     };
-  },
-  showContent: function(title) {
-    this.setState({
-      activeTitle: title
-    });
   },
   getContent: function() {
     var that = this;
@@ -45,6 +38,7 @@ var EditorView = React.createClass({
   render: function() {
     return (
       <div>
+        <Topbar title={getTitle} description={getDescription}/>
         <Editor name="editor" content={this.getContent()} theme="github" mode="javascript" />
       </div>
     );
