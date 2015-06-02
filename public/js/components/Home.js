@@ -19,21 +19,19 @@ var Home = React.createClass({
   mixins: [Router.State, Router.Navigation],
 
   getInitialState: function() {
+    AuthActions.isAuth(window.localStorage.getItem('io.codergirl'));
+
     return {
       user: AuthStore.getUser()
     };
-  },
-  componentWillMount: function() {
-    AuthActions.isAuth(window.localStorage.getItem('io.codergirl'));
   },
 
   componentDidMount: function() {
     AuthStore.addChangeListener(this._onChange);
   },
+
   _onChange: function() {
-    if (!AuthStore.getUser().isAuth){
-      this.transitionTo('login'); 
-    }
+    console.log("AuthStore:", AuthStore.getUser());
   },
   render: function() {
     var name = this.context.router.getCurrentPath();
