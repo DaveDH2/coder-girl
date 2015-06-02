@@ -43,9 +43,7 @@ var Login = React.createClass({
 
 
   componentDidMount: function() {
-
     AuthStore.addChangeListener(this._onChange);
-
   },
 
   componentWillUnmount: function() {
