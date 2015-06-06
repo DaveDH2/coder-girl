@@ -1,8 +1,8 @@
 /* 
 * @Author: Mark Bennett
 * @Date:   2015-05-28 16:17:21
-* @Last Modified by:   Mark Bennett
-* @Last Modified time: 2015-05-30 16:45:02
+* @Last Modified by:   nimi
+* @Last Modified time: 2015-06-05 17:34:40
 */
 
 'use strict';
@@ -82,7 +82,7 @@ var ChallengeComplete = React.createClass({
           <Doughnut data={data} width="200" height="250" />
           <h3 className="current-user-level">Current Level: {level}</h3>
         </div>
-        <Link to="challenge">Continue coding</Link>
+        <Link to="welcome">Go home</Link>
       </div>
     );
   }
